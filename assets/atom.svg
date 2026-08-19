@@ -1,12 +1,155 @@
-<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <g stroke-width="2" opacity="0.85">
-    <ellipse cx="200" cy="200" rx="150" ry="56" stroke="#178A4C" transform="rotate(25 200 200)"/>
-    <ellipse cx="200" cy="200" rx="150" ry="56" stroke="#6D28D9" transform="rotate(-25 200 200)"/>
-    <ellipse cx="200" cy="200" rx="150" ry="56" stroke="#7A1B3A" transform="rotate(90 200 200)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Quantum vacuum fluctuations around an atomic nucleus">
+  <defs>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#ffe9a8"/>
+      <stop offset="45%" stop-color="#f5c542"/>
+      <stop offset="100%" stop-color="#e08a2b"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7aa2ff" stop-opacity=".28"/>
+      <stop offset="100%" stop-color="#7aa2ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
+
+    <style>
+      /* electrons */
+      .orbit { fill: none; stroke: #8b7bff; stroke-opacity: .30; stroke-width: 1.4; }
+      .electron { fill: #63e6ff; filter: url(#soft); }
+
+      /* nucleus breathing */
+      .nucleus { transform-box: fill-box; transform-origin: center;
+                 animation: breathe 4.2s ease-in-out infinite; }
+      @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+
+      /* a virtual particle–antiparticle pair: pop in, drift apart, annihilate */
+      .pair { transform-box: fill-box; transform-origin: center;
+              animation: pop 3.6s ease-in-out infinite; opacity: 0; }
+      @keyframes pop {
+        0%   { opacity: 0; transform: scale(.2); }
+        12%  { opacity: 1; transform: scale(1); }
+        55%  { opacity: .85; }
+        72%  { opacity: 0; transform: scale(.2); }
+        100% { opacity: 0; transform: scale(.2); }
+      }
+      .p-matter { fill: #63e6ff; }
+      .p-anti   { fill: #ff5da2; }
+      .sym { fill: #06121f; font: 700 9px system-ui, sans-serif; text-anchor: middle; }
+
+      /* annihilation flash ring */
+      .flash { fill: none; stroke: #ffffff; stroke-opacity: .5; transform-box: fill-box;
+               transform-origin: center; animation: flash 3.6s ease-out infinite; opacity: 0; }
+      @keyframes flash {
+        0%,55% { opacity: 0; transform: scale(.3); }
+        60%    { opacity: .55; transform: scale(.4); }
+        80%    { opacity: 0; transform: scale(1.6); }
+        100%   { opacity: 0; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nucleus, .pair, .flash, .electron animateMotion { animation: none; }
+        .pair { opacity: .55; }
+      }
+    </style>
+  </defs>
+
+  <circle cx="300" cy="300" r="230" fill="url(#glow)"/>
+
+  <!-- electron orbits -->
+  <g>
+    <g transform="rotate(0 300 300)">
+      <path class="orbit" d="M 300,300 m -185,0 a 185,72 0 1,0 370,0 a 185,72 0 1,0 -370,0"/>
+      <circle class="electron" r="7">
+        <animateMotion dur="6.5s" repeatCount="indefinite"
+          path="M 300,300 m -185,0 a 185,72 0 1,0 370,0 a 185,72 0 1,0 -370,0"/>
+      </circle>
+    </g>
+    <g transform="rotate(60 300 300)">
+      <path class="orbit" d="M 300,300 m -185,0 a 185,72 0 1,0 370,0 a 185,72 0 1,0 -370,0"/>
+      <circle class="electron" r="7">
+        <animateMotion dur="8.2s" repeatCount="indefinite" begin="-2s"
+          path="M 300,300 m -185,0 a 185,72 0 1,0 370,0 a 185,72 0 1,0 -370,0"/>
+      </circle>
+    </g>
+    <g transform="rotate(120 300 300)">
+      <path class="orbit" d="M 300,300 m -185,0 a 185,72 0 1,0 370,0 a 185,72 0 1,0 -370,0"/>
+      <circle class="electron" r="7">
+        <animateMotion dur="7.3s" repeatCount="indefinite" begin="-4s"
+          path="M 300,300 m -185,0 a 185,72 0 1,0 370,0 a 185,72 0 1,0 -370,0"/>
+      </circle>
+    </g>
   </g>
-  <circle cx="200" cy="200" r="16" fill="#FFD86B"/>
-  <circle cx="200" cy="200" r="9" fill="#fff8e6"/>
-  <circle cx="336" cy="235" r="7" fill="#178A4C"/>
-  <circle cx="72" cy="175" r="6" fill="#6D28D9"/>
-  <circle cx="240" cy="70" r="6" fill="#7A1B3A"/>
+
+  <!-- nucleus -->
+  <g class="nucleus">
+    <circle cx="300" cy="300" r="34" fill="url(#core)" filter="url(#soft)"/>
+    <circle cx="290" cy="292" r="10" fill="#ffdf8f" fill-opacity=".9"/>
+    <circle cx="312" cy="298" r="9"  fill="#e79a3a" fill-opacity=".9"/>
+    <circle cx="300" cy="312" r="9"  fill="#ffcf6b" fill-opacity=".9"/>
+    <circle cx="288" cy="308" r="7"  fill="#e0842b" fill-opacity=".9"/>
+    <circle cx="311" cy="288" r="7"  fill="#ffd97f" fill-opacity=".9"/>
+  </g>
+
+  <!-- ============ VACUUM FLUCTUATIONS ============ -->
+  <!-- each pair positioned by a static translate; CSS animates only opacity+scale -->
+  <g transform="translate(120,110)"><g class="pair" style="animation-delay:0s">
+    <circle class="flash" cx="0" cy="0" r="16"/>
+    <circle class="p-matter" cx="-9" cy="0" r="6"/><text class="sym" x="-9" y="3">+</text>
+    <circle class="p-anti"   cx="9"  cy="0" r="6"/><text class="sym" x="9"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(470,140)"><g class="pair" style="animation-delay:.6s">
+    <circle class="flash" cx="0" cy="0" r="16"/>
+    <circle class="p-matter" cx="-9" cy="0" r="6"/><text class="sym" x="-9" y="3">+</text>
+    <circle class="p-anti"   cx="9"  cy="0" r="6"/><text class="sym" x="9"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(95,330)"><g class="pair" style="animation-delay:1.4s">
+    <circle class="flash" cx="0" cy="0" r="14"/>
+    <circle class="p-matter" cx="-8" cy="0" r="5"/><text class="sym" x="-8" y="3">+</text>
+    <circle class="p-anti"   cx="8"  cy="0" r="5"/><text class="sym" x="8"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(500,360)"><g class="pair" style="animation-delay:2.1s">
+    <circle class="flash" cx="0" cy="0" r="16"/>
+    <circle class="p-matter" cx="-9" cy="0" r="6"/><text class="sym" x="-9" y="3">+</text>
+    <circle class="p-anti"   cx="9"  cy="0" r="6"/><text class="sym" x="9"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(180,500)"><g class="pair" style="animation-delay:.9s">
+    <circle class="flash" cx="0" cy="0" r="14"/>
+    <circle class="p-matter" cx="-8" cy="0" r="5"/><text class="sym" x="-8" y="3">+</text>
+    <circle class="p-anti"   cx="8"  cy="0" r="5"/><text class="sym" x="8"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(420,505)"><g class="pair" style="animation-delay:1.8s">
+    <circle class="flash" cx="0" cy="0" r="14"/>
+    <circle class="p-matter" cx="-8" cy="0" r="5"/><text class="sym" x="-8" y="3">+</text>
+    <circle class="p-anti"   cx="8"  cy="0" r="5"/><text class="sym" x="8"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(300,70)"><g class="pair" style="animation-delay:2.7s">
+    <circle class="flash" cx="0" cy="0" r="13"/>
+    <circle class="p-matter" cx="-7" cy="0" r="5"/><text class="sym" x="-7" y="3">+</text>
+    <circle class="p-anti"   cx="7"  cy="0" r="5"/><text class="sym" x="7"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(300,535)"><g class="pair" style="animation-delay:3.1s">
+    <circle class="flash" cx="0" cy="0" r="13"/>
+    <circle class="p-matter" cx="-7" cy="0" r="5"/><text class="sym" x="-7" y="3">+</text>
+    <circle class="p-anti"   cx="7"  cy="0" r="5"/><text class="sym" x="7"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(70,215)"><g class="pair" style="animation-delay:3.4s">
+    <circle class="flash" cx="0" cy="0" r="12"/>
+    <circle class="p-matter" cx="-7" cy="0" r="4.5"/><text class="sym" x="-7" y="3">+</text>
+    <circle class="p-anti"   cx="7"  cy="0" r="4.5"/><text class="sym" x="7"  y="3">−</text>
+  </g></g>
+
+  <g transform="translate(525,240)"><g class="pair" style="animation-delay:1.1s">
+    <circle class="flash" cx="0" cy="0" r="12"/>
+    <circle class="p-matter" cx="-7" cy="0" r="4.5"/><text class="sym" x="-7" y="3">+</text>
+    <circle class="p-anti"   cx="7"  cy="0" r="4.5"/><text class="sym" x="7"  y="3">−</text>
+  </g></g>
 </svg>
