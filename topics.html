@@ -2,6 +2,18 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Topics — ICEQST 2026</title>
 <link rel="stylesheet" href="assets/style.css">
+<style>
+  /* click-to-expand topic overviews */
+  .topic-item{border:1px solid rgba(139,123,255,.18);border-radius:12px;margin:10px 0;overflow:hidden;background:rgba(255,255,255,.02)}
+  button.topic{width:100%;text-align:left;background:none;border:0;cursor:pointer;font:inherit;color:inherit;
+    display:flex;align-items:center;gap:12px;padding:14px 16px;margin:0}
+  button.topic .chev{margin-left:auto;font-size:20px;line-height:1;color:var(--sub,#8b7bff);transition:transform .25s ease;flex:0 0 auto}
+  button.topic[aria-expanded="true"] .chev{transform:rotate(45deg)}
+  button.topic:hover{background:rgba(139,123,255,.06)}
+  button.topic:focus-visible{outline:2px solid #63e6ff;outline-offset:-2px}
+  .topic-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .topic-body p{margin:0;padding:0 16px 16px 40px;color:var(--sub,#9aa3b2);line-height:1.6}
+</style>
 </head><body>
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -15,7 +27,6 @@
 <a class="link" href="speakers.html">Speakers</a>
 <a class="link" href="committees.html">Committees</a>
 <a class="link" href="information.html">Information</a>
-
     <a class="btn" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Register</a>
     <a class="btn alt" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Submit Abstract</a>
   </div>
@@ -23,12 +34,57 @@
 <section class="section"><div class="wrap">
   <div class="eyebrow">Call for contributions</div>
   <h2 class="h serif">Thematic Topics</h2>
-  <p class="lead">We welcome poster contributions across the following areas of emerging quantum science and technology.</p>
-  <div class="grid two" style="margin-top:24px"><div><div class="topic"><span class="dot"></span><span>Emerging Quantum Sciences and Technologies</span></div><div class="topic"><span class="dot"></span><span>Quantum Information and Computing</span></div><div class="topic"><span class="dot"></span><span>Secure Quantum Communications</span></div><div class="topic"><span class="dot"></span><span>Quantum Optics & Photonics</span></div></div><div><div class="topic"><span class="dot"></span><span>Quantum Sensing and Metrology</span></div><div class="topic"><span class="dot"></span><span>Quantum Algorithms and Machine Learning</span></div><div class="topic"><span class="dot"></span><span>Quantum Materials and Devices</span></div><div class="topic"><span class="dot"></span><span>Quantum Foundations</span></div></div></div>
+  <p class="lead">We welcome poster contributions across the following areas of emerging quantum science and technology. Tap any topic to read a short overview.</p>
+  <div class="grid two" style="margin-top:24px">
+    <div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Emerging Quantum Sciences and Technologies</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>The broad frontier where quantum theory is turned into working technology. This track spans the convergence of quantum information, materials, optics and engineering, and welcomes cross-cutting or interdisciplinary work that bridges fundamental science and real devices — including advances that don't sit neatly inside a single sub-field.</p></div>
+      </div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Quantum Information and Computing</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>Using qubits, superposition and entanglement to process information in ways classical machines cannot. Covers gate-model and measurement-based computing, quantum error correction, and the near-term (NISQ) hardware and applications being explored today across superconducting, trapped-ion and photonic platforms.</p></div>
+      </div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Secure Quantum Communications</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>Exploiting quantum mechanics to transmit information with security rooted in the laws of physics rather than computational hardness. Includes quantum key distribution (QKD), entanglement distribution, quantum repeaters and networks, and the longer-term vision of a quantum internet.</p></div>
+      </div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Quantum Optics &amp; Photonics</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>The study of light and light–matter interaction down to the single-photon level. Underpins photonic qubits, single-photon sources and detectors, nonlinear and integrated photonics, and much of the enabling hardware for both quantum communication and computing.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Quantum Sensing and Metrology</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>Using quantum states to measure physical quantities with precision beyond classical limits. Applications include atomic clocks, gravimeters, magnetometers (such as nitrogen-vacancy centres in diamond) and quantum-enhanced imaging — turning fragile quantum coherence into practical measurement advantage.</p></div>
+      </div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Quantum Algorithms and Machine Learning</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>Designing algorithms that use quantum resources for computational advantage — from Shor and Grover to variational and quantum machine-learning methods. Explores where quantum models can accelerate optimisation, simulation and learning, and how to benchmark genuine advantage over classical approaches.</p></div>
+      </div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Quantum Materials and Devices</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>Investigating materials whose behaviour emerges from quantum effects — superconductors, topological insulators, two-dimensional materials and spin systems — and the devices built from them, including qubit platforms, detectors and quantum-enabled electronics.</p></div>
+      </div>
+      <div class="topic-item">
+        <button class="topic" aria-expanded="false" onclick="toggleTopic(this)"><span class="dot"></span><span>Quantum Foundations</span><span class="chev">+</span></button>
+        <div class="topic-body"><p>Examining the conceptual and mathematical bedrock of quantum theory: measurement, entanglement, nonlocality, contextuality and the competing interpretations. Increasingly, foundational insight feeds directly back into practical protocols across quantum information and metrology.</p></div>
+      </div>
+    </div>
+  </div>
   <div class="cta-row"><a class="cta primary" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Submit an abstract</a></div>
 </div></section>
 <footer class="foot"><div class="wrap">
     <div>ICEQST 2026 &middot; School of Natural Sciences, NUST H-12, Islamabad</div>
     <div><a href="https://icaqst.vercel.app/#home" target="_blank" rel="noopener">icaqst.vercel.app</a> &middot; #ICEQST2026</div>
   </div></footer>
+<script>
+  function toggleTopic(btn){
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    var body = btn.nextElementSibling;
+    body.style.maxHeight = open ? null : body.scrollHeight + 'px';
+  }
+</script>
 </body></html>
