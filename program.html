@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Program — ICEQST 2026</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .prog-sess{font-size:22px;margin:26px 0 4px}
+  .prog-tbl{margin-top:6px;border-top:1px solid rgba(120,120,140,.2)}
+  .prog-row{display:grid;grid-template-columns:132px 1fr;gap:18px;padding:15px 6px;
+    border-bottom:1px solid rgba(120,120,140,.16);align-items:start}
+  .prog-time{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;
+    color:var(--fg,inherit);font-size:.95em}
+  .prog-title{font-weight:600;line-height:1.4}
+  .prog-speaker{color:var(--sub,#9aa3b2);font-size:.9em;margin-top:4px}
+  .prog-tag{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;
+    padding:2px 9px;border-radius:999px;border:1px solid rgba(120,120,140,.3);
+    color:var(--sub,#9aa3b2);margin-top:8px}
+  .prog-row.evt .prog-label{font-weight:600;color:var(--sub,#9aa3b2);
+    text-transform:uppercase;letter-spacing:.06em;font-size:.82em}
+  .prog-row.keynote{background:rgba(139,123,255,.05);border-radius:10px}
+  .prog-row.keynote .prog-tag{border-color:rgba(139,123,255,.5);color:var(--v,#8b7bff)}
+  @media(max-width:600px){.prog-row{grid-template-columns:1fr;gap:4px}
+    .prog-time{font-size:.9em;color:var(--sub,#9aa3b2)}}
+</style>
+</head><body>
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/nust.png" alt="NUST">
+      <span><b>ICEQST 2026</b><span>School of Natural Sciences, NUST</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
+    <a class="link" href="index.html">Home</a>
+    <a class="link" href="topics.html">Topics</a>
+    <a class="link" href="speakers.html">Speakers</a>
+    <a class="link active" href="program.html">Program</a>
+    <a class="link" href="abstracts.html">Abstracts</a>
+    <a class="link" href="committees.html">Committees</a>
+    <a class="link" href="information.html">Information</a>
+    <a class="btn" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Register</a>
+    <a class="btn alt" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Submit Abstract</a>
+  </div>
+</header>
+
+<section class="section"><div class="wrap">
+  <div class="eyebrow">27 August 2026 &middot; Dept. of Physics &amp; Astronomy, SNS, NUST H-12</div>
+  <h2 class="h serif">Program</h2>
+  <div class="note"><b>Tentative program &mdash; subject to change.</b> All timings are provisional.</div>
+  <div id="prog"></div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+    <div>ICEQST 2026 &middot; School of Natural Sciences, NUST H-12, Islamabad</div>
+    <div><a href="https://iceqst.vercel.app/#home" target="_blank" rel="noopener">iceqst.vercel.app</a> &middot; #ICEQST2026</div>
+  </div></footer>
+
+<script>
+const PROGRAM = {
+  "Morning Session": [
+    {
+      "type": "reg",
+      "time": "9:00 – 9:30 AM",
+      "label": "Registration"
+    },
+    {
+      "type": "session",
+      "time": "9:30 – 10:00 AM",
+      "label": "Opening Session"
+    },
+    {
+      "type": "break",
+      "time": "10:00 – 10:20 AM",
+      "label": "Tea / Coffee Break"
+    },
+    {
+      "type": "keynote",
+      "time": "10:20 – 11:00 AM",
+      "name": "Prof. Dr. Asghar Qadir",
+      "aff": "PAS",
+      "tag": "Keynote · 40 min",
+      "title": "Quantum Theory and Technology"
+    },
+    {
+      "type": "talk",
+      "time": "11:00 – 11:30 AM",
+      "name": "Prof. Dr. Farhan Saif",
+      "aff": "QAU",
+      "tag": "Invited-1 · 25+5",
+      "title": "Quantum Supremacy Demystified: Beyond the Bits, Algorithm and AI"
+    },
+    {
+      "type": "talk",
+      "time": "11:30 – 12:00 PM",
+      "name": "Dr. Manzoor Ikram",
+      "aff": "NILOP",
+      "tag": "Invited-2 · 25+5",
+      "title": "Emerging Trends in Quantum Technologies: Quantum Sensors; Atomic Clock"
+    },
+    {
+      "type": "poster",
+      "time": "12:00 – 1:50 PM",
+      "label": "Poster Session"
+    }
+  ],
+  "Afternoon Session": [
+    {
+      "type": "break",
+      "time": "1:50 – 2:55 PM",
+      "label": "Lunch Break"
+    },
+    {
+      "type": "talk",
+      "time": "2:55 – 3:25 PM",
+      "name": "Prof. Dr. Shahid Qamar",
+      "aff": "PIEAS",
+      "tag": "Invited-3 · 25+5",
+      "title": "Journey from Quantum Computing to Communication"
+    },
+    {
+      "type": "talk",
+      "time": "3:25 – 3:55 PM",
+      "name": "Prof. Dr. Felipe A. Pinheiro",
+      "aff": "UFRJ, Brazil",
+      "tag": "Invited-4 · 25+5",
+      "title": "Nonergodic Extended Phases in Wave Transport: From Disordered to Quasiperiodic Systems Coupled to Electromagnetic Cavities"
+    },
+    {
+      "type": "talk",
+      "time": "3:55 – 4:25 PM",
+      "name": "Dr. Hammad Tanveer Butt",
+      "aff": "CoEME, NUST",
+      "tag": "Invited-5 · 25+5",
+      "title": "Going Quantum in Machine Learning: The Ultimate Upgrade"
+    },
+    {
+      "type": "break",
+      "time": "4:25 – 4:40 PM",
+      "label": "Tea / Coffee Break"
+    },
+    {
+      "type": "talk",
+      "time": "4:40 – 5:10 PM",
+      "name": "Dr. Morgan Berkane",
+      "aff": "University of Freiburg, Germany",
+      "tag": "Invited-6 · 25+5",
+      "title": "Distinguishability Dynamics Induced by Structured Internal Degrees of Freedom"
+    },
+    {
+      "type": "talk",
+      "time": "5:10 – 5:40 PM",
+      "name": "Dr. Muhammad Imran",
+      "aff": "NILOP",
+      "tag": "Invited-7 · 25+5",
+      "title": "Quantum Cryptography: A Tool for Secure Communication"
+    },
+    {
+      "type": "session",
+      "time": "5:40 – 6:10 PM",
+      "label": "Closing Session"
+    }
+  ]
+};
+(function(){
+  const esc=s=>String(s==null?"":s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const root=document.getElementById('prog');
+  let html='';
+  for(const [sess,rows] of Object.entries(PROGRAM)){
+    html+=`<h3 class="serif prog-sess">${esc(sess)}</h3><div class="prog-tbl">`;
+    for(const r of rows){
+      if(r.type==='talk'||r.type==='keynote'){
+        const cls=r.type==='keynote'?'prog-row keynote':'prog-row';
+        const spk=[r.name, r.aff].filter(Boolean).join(', ');
+        html+=`<div class="${cls}">
+          <div class="prog-time">${esc(r.time)}</div>
+          <div><div class="prog-title">${esc(r.title)}</div>
+            <div class="prog-speaker">${esc(spk)}</div>
+            ${r.tag?`<span class="prog-tag">${esc(r.tag)}</span>`:''}</div>
+        </div>`;
+      } else {
+        html+=`<div class="prog-row evt">
+          <div class="prog-time">${esc(r.time)}</div>
+          <div class="prog-label">${esc(r.label)}</div>
+        </div>`;
+      }
+    }
+    html+='</div>';
+  }
+  root.innerHTML=html;
+})();
+</script>
+</body></html>
