@@ -3,23 +3,39 @@
 <title>Program — ICEQST 2026</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
-  .prog-sess{font-size:22px;margin:26px 0 4px}
-  .prog-tbl{margin-top:6px;border-top:1px solid rgba(120,120,140,.2)}
-  .prog-row{display:grid;grid-template-columns:132px 1fr;gap:18px;padding:15px 6px;
-    border-bottom:1px solid rgba(120,120,140,.16);align-items:start}
-  .prog-time{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;
-    color:var(--fg,inherit);font-size:.95em}
-  .prog-title{font-weight:600;line-height:1.4}
-  .prog-speaker{color:var(--sub,#9aa3b2);font-size:.9em;margin-top:4px}
-  .prog-tag{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;
-    padding:2px 9px;border-radius:999px;border:1px solid rgba(120,120,140,.3);
-    color:var(--sub,#9aa3b2);margin-top:8px}
-  .prog-row.evt .prog-label{font-weight:600;color:var(--sub,#9aa3b2);
-    text-transform:uppercase;letter-spacing:.06em;font-size:.82em}
-  .prog-row.keynote{background:rgba(139,123,255,.05);border-radius:10px}
-  .prog-row.keynote .prog-tag{border-color:rgba(139,123,255,.5);color:var(--v,#8b7bff)}
-  @media(max-width:600px){.prog-row{grid-template-columns:1fr;gap:4px}
-    .prog-time{font-size:.9em;color:var(--sub,#9aa3b2)}}
+  :root{--acc:#8b7bff;--acc2:#38bdf8}
+  .pg-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .pg-chip{font-size:.8em;font-weight:600;padding:6px 13px;border-radius:999px;
+    border:1px solid rgba(120,120,140,.28);color:var(--sub,#9aa3b2)}
+  .pg-sess{display:flex;align-items:center;gap:12px;margin:38px 0 8px}
+  .pg-sess h3{font-size:21px;margin:0}
+  .pg-sess .ln{flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(139,123,255,.5),transparent)}
+  .tl{margin-top:4px}
+  .tl-row{display:grid;grid-template-columns:88px 1fr;gap:0}
+  .tl-t{text-align:right;padding:2px 20px 0 0;font-weight:700;font-variant-numeric:tabular-nums;
+    color:var(--sub,#9aa3b2);font-size:.9em;white-space:nowrap}
+  .tl-c{position:relative;border-left:2px solid rgba(120,120,140,.22);padding:0 0 26px 26px}
+  .tl-row:last-child .tl-c{padding-bottom:6px}
+  .tl-c::before{content:"";position:absolute;left:-8px;top:3px;width:13px;height:13px;border-radius:50%;
+    background:var(--bg,#0b0b12);border:2px solid rgba(120,120,140,.5);box-sizing:border-box}
+  .tl-row.talk .tl-c::before{background:var(--acc);border-color:var(--acc)}
+  .tl-row.keynote .tl-c::before{width:17px;height:17px;left:-10px;background:var(--acc);
+    border-color:var(--acc);box-shadow:0 0 0 5px rgba(139,123,255,.18)}
+  .tl-row.poster .tl-c::before{background:var(--acc2);border-color:var(--acc2)}
+  .card2{border:1px solid rgba(120,120,140,.2);border-radius:13px;padding:14px 17px;
+    background:var(--card,rgba(255,255,255,.02));transition:transform .16s ease,box-shadow .16s ease}
+  .card2:hover{transform:translateX(2px);box-shadow:0 10px 28px -20px rgba(0,0,0,.6)}
+  .tl-row.keynote .card2{border-color:rgba(139,123,255,.45);
+    background:linear-gradient(180deg,rgba(139,123,255,.09),rgba(139,123,255,.02))}
+  .c-title{font-weight:650;line-height:1.4}
+  .c-spk{color:var(--sub,#9aa3b2);font-size:.9em;margin-top:5px}
+  .c-tag{display:inline-block;font-size:.7em;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:3px 10px;border-radius:999px;margin-top:9px;color:var(--acc);background:rgba(139,123,255,.14)}
+  .tl-row.keynote .c-tag{color:#fff;background:var(--acc)}
+  .evt{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.82em;
+    color:var(--sub,#9aa3b2);padding-top:2px}
+  .evt.poster{color:var(--acc2)}
+  @media(max-width:600px){.tl-row{grid-template-columns:70px 1fr}.tl-t{padding-right:14px;font-size:.8em}}
 </style>
 </head><body>
 <header class="nav" id="nav">
@@ -40,40 +56,42 @@
     <a class="btn alt" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Submit Abstract</a>
   </div>
 </header>
-
 <section class="section"><div class="wrap">
-  <div class="eyebrow">27 August 2026 &middot; Dept. of Physics &amp; Astronomy, SNS, NUST H-12</div>
-  <h2 class="h serif">Program</h2>
-  <div class="note"><b>Tentative program &mdash; subject to change.</b> All timings are provisional.</div>
-  <div id="prog"></div>
+  <div class="eyebrow">Tentative Program</div>
+  <h2 class="h serif">27 August 2026</h2>
+  <div class="pg-chips">
+    <span class="pg-chip">Dept. of Physics &amp; Astronomy, SNS, NUST H-12</span>
+    <span class="pg-chip">Keynote + 7 invited talks</span>
+    <span class="pg-chip">Hybrid &middot; free online</span>
+  </div>
+  <div class="note" style="margin-top:16px"><b>Subject to change.</b> All timings are provisional.</div>
+  <div class="tl" id="tl"></div>
 </div></section>
-
 <footer class="foot"><div class="wrap">
     <div>ICEQST 2026 &middot; School of Natural Sciences, NUST H-12, Islamabad</div>
     <div><a href="https://iceqst.vercel.app/#home" target="_blank" rel="noopener">iceqst.vercel.app</a> &middot; #ICEQST2026</div>
   </div></footer>
-
 <script>
-const PROGRAM = {
+const PROGRAM={
   "Morning Session": [
     {
       "type": "reg",
-      "time": "9:00 – 9:30 AM",
+      "time": "9:00 – 9:30",
       "label": "Registration"
     },
     {
       "type": "session",
-      "time": "9:30 – 10:00 AM",
+      "time": "9:30 – 10:00",
       "label": "Opening Session"
     },
     {
       "type": "break",
-      "time": "10:00 – 10:20 AM",
+      "time": "10:00 – 10:20",
       "label": "Tea / Coffee Break"
     },
     {
       "type": "keynote",
-      "time": "10:20 – 11:00 AM",
+      "time": "10:20 – 11:00",
       "name": "Prof. Dr. Asghar Qadir",
       "aff": "PAS",
       "tag": "Keynote · 40 min",
@@ -81,7 +99,7 @@ const PROGRAM = {
     },
     {
       "type": "talk",
-      "time": "11:00 – 11:30 AM",
+      "time": "11:00 – 11:30",
       "name": "Prof. Dr. Farhan Saif",
       "aff": "QAU",
       "tag": "Invited-1 · 25+5",
@@ -89,7 +107,7 @@ const PROGRAM = {
     },
     {
       "type": "talk",
-      "time": "11:30 – 12:00 PM",
+      "time": "11:30 – 12:00",
       "name": "Dr. Manzoor Ikram",
       "aff": "NILOP",
       "tag": "Invited-2 · 25+5",
@@ -97,19 +115,19 @@ const PROGRAM = {
     },
     {
       "type": "poster",
-      "time": "12:00 – 1:50 PM",
+      "time": "12:00 – 1:50",
       "label": "Poster Session"
     }
   ],
   "Afternoon Session": [
     {
       "type": "break",
-      "time": "1:50 – 2:55 PM",
+      "time": "1:50 – 2:55",
       "label": "Lunch Break"
     },
     {
       "type": "talk",
-      "time": "2:55 – 3:25 PM",
+      "time": "2:55 – 3:25",
       "name": "Prof. Dr. Shahid Qamar",
       "aff": "PIEAS",
       "tag": "Invited-3 · 25+5",
@@ -117,7 +135,7 @@ const PROGRAM = {
     },
     {
       "type": "talk",
-      "time": "3:25 – 3:55 PM",
+      "time": "3:25 – 3:55",
       "name": "Prof. Dr. Felipe A. Pinheiro",
       "aff": "UFRJ, Brazil",
       "tag": "Invited-4 · 25+5",
@@ -125,7 +143,7 @@ const PROGRAM = {
     },
     {
       "type": "talk",
-      "time": "3:55 – 4:25 PM",
+      "time": "3:55 – 4:25",
       "name": "Dr. Hammad Tanveer Butt",
       "aff": "CoEME, NUST",
       "tag": "Invited-5 · 25+5",
@@ -133,12 +151,12 @@ const PROGRAM = {
     },
     {
       "type": "break",
-      "time": "4:25 – 4:40 PM",
+      "time": "4:25 – 4:40",
       "label": "Tea / Coffee Break"
     },
     {
       "type": "talk",
-      "time": "4:40 – 5:10 PM",
+      "time": "4:40 – 5:10",
       "name": "Dr. Morgan Berkane",
       "aff": "University of Freiburg, Germany",
       "tag": "Invited-6 · 25+5",
@@ -146,7 +164,7 @@ const PROGRAM = {
     },
     {
       "type": "talk",
-      "time": "5:10 – 5:40 PM",
+      "time": "5:10 – 5:40",
       "name": "Dr. Muhammad Imran",
       "aff": "NILOP",
       "tag": "Invited-7 · 25+5",
@@ -154,37 +172,31 @@ const PROGRAM = {
     },
     {
       "type": "session",
-      "time": "5:40 – 6:10 PM",
+      "time": "5:40 – 6:10",
       "label": "Closing Session"
     }
   ]
 };
 (function(){
   const esc=s=>String(s==null?"":s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const root=document.getElementById('prog');
   let html='';
   for(const [sess,rows] of Object.entries(PROGRAM)){
-    html+=`<h3 class="serif prog-sess">${esc(sess)}</h3><div class="prog-tbl">`;
-    for(const r of rows){
+    html+=`<div class="pg-sess"><h3 class="serif">${esc(sess)}</h3><span class="ln"></span></div><div class="tl">`;
+    rows.forEach(r=>{
       if(r.type==='talk'||r.type==='keynote'){
-        const cls=r.type==='keynote'?'prog-row keynote':'prog-row';
-        const spk=[r.name, r.aff].filter(Boolean).join(', ');
-        html+=`<div class="${cls}">
-          <div class="prog-time">${esc(r.time)}</div>
-          <div><div class="prog-title">${esc(r.title)}</div>
-            <div class="prog-speaker">${esc(spk)}</div>
-            ${r.tag?`<span class="prog-tag">${esc(r.tag)}</span>`:''}</div>
-        </div>`;
+        const spk=[r.name,r.aff].filter(Boolean).join(', ');
+        html+=`<div class="tl-row ${r.type}"><div class="tl-t">${esc(r.time)}</div>
+          <div class="tl-c"><div class="card2"><div class="c-title">${esc(r.title)}</div>
+          <div class="c-spk">${esc(spk)}</div>
+          ${r.tag?`<span class="c-tag">${esc(r.tag)}</span>`:''}</div></div></div>`;
       } else {
-        html+=`<div class="prog-row evt">
-          <div class="prog-time">${esc(r.time)}</div>
-          <div class="prog-label">${esc(r.label)}</div>
-        </div>`;
+        html+=`<div class="tl-row ${r.type}"><div class="tl-t">${esc(r.time)}</div>
+          <div class="tl-c"><div class="evt ${r.type==='poster'?'poster':''}">${esc(r.label)}</div></div></div>`;
       }
-    }
+    });
     html+='</div>';
   }
-  root.innerHTML=html;
+  document.getElementById('tl').innerHTML=html;
 })();
 </script>
 </body></html>
