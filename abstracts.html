@@ -1,0 +1,161 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ABSTRACTS — ICEQST 2026</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .abs-list{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+  .abs-item{border:1px solid rgba(120,120,140,.22);border-radius:14px;overflow:hidden;background:var(--card,rgba(255,255,255,.02))}
+  .abs-head{width:100%;display:flex;align-items:flex-start;gap:14px;text-align:left;background:none;border:0;cursor:pointer;padding:18px 20px;font:inherit;color:inherit}
+  .abs-head:hover{background:rgba(120,120,140,.06)}
+  .abs-num{flex:0 0 auto;font-variant-numeric:tabular-nums;opacity:.5;font-weight:700;min-width:26px}
+  .abs-titlewrap{flex:1 1 auto}
+  .abs-title{font-weight:600;line-height:1.35}
+  .abs-by{display:block;font-weight:400;font-size:.9em;color:var(--sub,#8a8a99);margin-top:4px}
+  .abs-tag{display:inline-block;font-size:.72em;font-weight:600;letter-spacing:.02em;padding:3px 10px;border-radius:999px;border:1px solid rgba(120,120,140,.3);color:var(--sub,#9a9aa8);margin-top:8px;white-space:nowrap}
+  .abs-chev{flex:0 0 auto;transition:transform .2s ease;opacity:.55;margin-top:2px}
+  .abs-item.open .abs-chev{transform:rotate(90deg)}
+  .abs-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .abs-item.open .abs-body{max-height:2000px}
+  .abs-body-inner{padding:0 20px 22px 60px;color:var(--sub,#b7b7c2);line-height:1.7}
+  .abs-meta{margin-bottom:12px;font-size:.9em}
+  .abs-meta b{color:var(--fg,inherit)}
+  @media(max-width:640px){.abs-body-inner{padding-left:20px}}
+</style>
+</head><body>
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/nust.png" alt="NUST">
+      <span><b>ICEQST 2026</b><span>School of Natural Sciences, NUST</span></span>
+    </a>
+    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">&#9776;</button>
+    <a class="link" href="index.html">Home</a>
+    <a class="link" href="topics.html">Topics</a>
+    <a class="link" href="speakers.html">Speakers</a>
+    <a class="link" href="committees.html">Committees</a>
+    <a class="link active" href="abstracts.html">Abstracts</a>
+    <a class="link" href="information.html">Information</a>
+    <a class="btn" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Register</a>
+    <a class="btn alt" href="https://forms.gle/3HTxdRwGn3nbWp9Q8" target="_blank" rel="noopener">Submit Abstract</a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="eyebrow">ICEQST 2026 &middot; Poster Session</div>
+    <h1 class="h serif">Accepted Abstracts</h1>
+    <p class="lead" style="margin-top:14px">Click a title to read the full abstract. <span id="absCount"></span></p>
+    <div class="abs-list" id="absList"></div>
+  </div>
+</section>
+
+<footer class="foot"><div class="wrap">
+    <div>ICEQST 2026 &middot; School of Natural Sciences, NUST H-12, Islamabad</div>
+    <div><a href="https://iceqst.vercel.app/#home" target="_blank" rel="noopener">iceqst.vercel.app</a> &middot; #ICEQST2026</div>
+  </div></footer>
+
+<script>
+const ABSTRACTS = [
+  {
+    "title": "A Unified CPU-GPU Memory Pathway with Transparent SSD-RAM Integration for Windows-Based Systems",
+    "presenter": "Abdullah Pervaiz",
+    "institution": "Kohsar University Murree",
+    "track": "Other",
+    "coauthors": "",
+    "abstract": "Abdullah Pervaiz\nDepartment of Environmental Science Kohsar University Murree, Pakistan\nabdullahpervaizraja@gmail.com\nAbstract: Apple Silicon systens running macOS work well because they use a unified memory architecture.\nThis means the CPU and the GPU share one single pool of DRAM. Because\nthey use one memory-controller pathway the system does not have to move data forth like discrete-memory systems do. Most Windows-based PCusemodel. In Windows-based PCS the CPU has its DRAM and the GPU has its own VRAM. These two parts are separate. Have to talk so esch other through a PCI-Express (PCle) link. In this paper I propose a way to bring that single-pathway no-copy model to regular Windows hardware. I also want to extend this pool to NVMe SSD storage. This way if your data is bigger than your RAM the data stays inside one single pool instead of moving to a slow page file. I tested this design in three ways. First I made an analytical model to look at latency, contention and energy use for all three ways of organizing these pathways. Second I ran a trace-driven simulation of the DRAM/SSD riering policy. This simulation looked at replucement algorishms how much to prefeich data and how the workload moves. Third I built a software prototype using memory-mapped SSD-backed pools and tested the protorype on actual hardware. My analytical model shows that the unified pathway reduces, per-access latency by 2.60x and mean contention delay by 1.65% Relative, to a PCle-copy-bound pathway SSD-RAM tiering improves effective latency by 1.40x over a conventional page-file fallback. 1 read a study and it says that FU keeps 71.4% of references in a DRAM tier that is 20% of the working set compared to an 81.6%c offline-optimal bound. I also note that sequential prefetching shows a best point when the degree is 12 pages and this makes the effective latency better 2.74x over demand paging causes things to slow down when you use larger degrees because of cache pollution. Our prototype shows this tiering behavior clearly.\nWhen the pages are resident reads through the pointer reach 218 GB/s. However when the pages have been evicted those same reads, through the pointer drop to 3.85 GB/s. a 56x gap across one unchanged address range.\nKeywords: memory-controller pathway; discrete-memory, systems; SSD/RAM tiering: offline-optimal bound; SSD-backed pools; prefetching."
+  },
+  {
+    "title": "Quantum Computing Simulator Platform",
+    "presenter": "Maaz Ahmed",
+    "institution": "One Tech and AI",
+    "track": "Quantum Computing & Algorithms",
+    "coauthors": "Maaz Ahmed, Shamim Haider, Ahmed Ali, Muhammad Hassnain",
+    "abstract": "Quantum computing promises transformative capabilities across cryptography, optimisation, materials science, artificial intelligence, communications, and scientific modelling. However, access to physical quantum hardware remains constrained by cost, availability, noise, and specialised infrastructure. This work presents the development of a **Quantum Simulator**, a scalable software platform designed to provide an accessible environment for quantum circuit design, algorithm development, experimentation, and preparation for future quantum hardware integration.\n\nThe platform incorporates an interactive **2D quantum circuit builder** supporting configurable qubits, quantum gates, measurement operations, ancilla qubits, and circuit execution. A complementary **3D cube-based circuit architecture** is being developed to explore spatial representations of computational and ancilla qubits, enabling experimentation with error detection and quantum error-correction concepts. The simulator supports the study and implementation of fundamental and advanced quantum algorithms, including quantum teleportation, Quantum Fourier Transform (QFT), Quantum Phase Estimation (QPE), Grover’s algorithm, Shor’s algorithm, Variational Quantum Eigensolver (VQE), and quantum key distribution protocols.\n\nA key objective is to extend the simulator beyond educational demonstrations toward **application-oriented quantum research**. Current development areas include quantum-secured communications, hybrid quantum-classical applications for banking and cybersecurity, quantum chemistry and materials simulation, and exploration of quantum machine-learning approaches. The architecture is designed to progressively interface with FPGA control systems and photonic components, providing a potential pathway from software simulation to experimental quantum hardware.\n\nThe platform therefore serves as a bridge between **quantum education, algorithmic research, application development, and hardware experimentation**. Through collaboration with universities and research institutions, the project aims to provide researchers and students with an accessible environment for developing, testing, validating, and benchmarking quantum algorithms while contributing towards the development of a broader indigenous quantum computing ecosystem."
+  },
+  {
+    "title": "Development of N-Doped Carbon Nanodot-Dye Dual-Fluorescent System for Ratiometric Optical pH Sensing.",
+    "presenter": "Iqra Saleem",
+    "institution": "National University of Sciences and Technology (NUST), Islamabad.",
+    "track": "Quantum Materials & Devices",
+    "coauthors": "Prof. Faheem Amin",
+    "abstract": "Fluorescent nanomaterials provide attractive platforms for optical sensing because of their tunable photophysical properties, high sensitivity, and compatibility with biological environments. In this work, an N-doped carbon nanodot (CND)–fluoresceinamine dual-fluorescent system was investigated for ratiometric optical pH sensing. N-doped CNDs were synthesized and characterized using X-ray diffraction (XRD), Fourier-transform infrared spectroscopy (FTIR), UV–Vis absorption, excitation, and emission spectroscopy, followed by spectroscopic characterization of fluoresceinamine. The possibility of donor–acceptor energy transfer between the CNDs and fluoresceinamine was initially investigated through their spectral characteristics and fluorescence responses. However, the experimental observations did not provide sufficient evidence to conclusively attribute the observed fluorescence behavior to Förster resonance energy transfer (FRET). Instead, distinguishable CND- and dye-associated fluorescence signals were observed, supporting a dual-fluorescent sensing strategy.\n\nTo investigate the influence of surface modification and confinement, the CNDs were sequentially coated with sodium alginate using calcium-ion-mediated layer-by-layer crosslinking, producing samples from bare CNDs to four coating layers. CND fluorescence was monitored under 340 nm excitation, while fluoresceinamine fluorescence was evaluated under 480 nm excitation. The CND–dye systems were further investigated under 340 nm excitation over a pH range of 5–10. A ratiometric parameter, defined as the ratio of dye fluorescence intensity to CND fluorescence intensity, was used to evaluate the pH-dependent optical response.\n\nThe ratiometric responses exhibited distinct coating-dependent behavior. The first and second alginate coatings produced pronounced sigmoidal pH responses, indicating enhanced and well-defined pH-dependent transitions. The observed difference between acidic and near-neutral conditions is particularly relevant to biological applications, as cancer cells and their microenvironments can exhibit more acidic intracellular or local conditions, while normal physiological conditions are generally closer to neutral pH (~7). The system therefore shows potential for distinguishing acidic environments associated with cancer-related cellular conditions from near-neutral physiological environments. Furthermore, the response near pH 5 suggests potential future application in monitoring highly acidic intracellular compartments such as lysosomes. Although cellular experiments are required for direct validation, the developed platform provides a promising foundation for ratiometric fluorescence-based pH monitoring in biological and cancer-related applications."
+  },
+  {
+    "title": "Magneto optical Transport in the α–T3 lattice",
+    "presenter": "ADIL",
+    "institution": "Quaid i Azam university Islamabad , Pakistan",
+    "track": "Quantum Materials & Devices",
+    "coauthors": "Dr. Muzmil Shah",
+    "abstract": "This thesis investigates the magneto-optical transport properties of the α-T3 lattice, a tunable two-dimensional Dirac system that continuously connects the graphene limit (α = 0) with the dice lattice limit (α = 1). Unlike graphene, the α-T3 lattice contains an additional hub site, which gives rise to a flat band at zero energy and modifies the optical transition spectrum. The main objective of this work is to study how the interpolation parameter α, perpendicular magnetic field, and chemical potential influence the frequency-dependent longitudinal and transverse optical conductivities.\nThe theoretical analysis is carried out in the Landau-quantized regime. Starting\nfrom the low-energy Hamiltonian of the α-T3 lattice, the Landau-level spectrum and\ncorresponding eigenstates are obtained under a perpendicular magnetic field. The\nmagneto-optical conductivity tensor is then derived using the Kubo linear-response formalism. Both the real and imaginary parts of the longitudinal conductivity, σxx(ω), and Hall conductivity, σxy(ω), are evaluated with phenomenological Lorentzian broadening.\nThe results show that the magneto-optical response of the α-T3 lattice is strongly\ncontrolled by the flat band, valley-dependent Landau levels, and α-dependent optical transition matrix elements. The longitudinal conductivity exhibits sharp resonance peaks associated with allowed inter-Landau-level transitions, while the transverse conductivity shows sign-changing features related to the valley and polarization character of the transitions. Increasing the magnetic field shifts the resonance peaks to higher photon energies due to the √B dependent Landau-level spacing. Changing the chemical potential modifies the occupation of Landau levels, causing\nsome transitions to disappear and new intraband transitions to appear. Overall, this thesis demonstrates that the α-T3 lattice has a richer magneto-optical response than graphene because of the combined effects of the flat band, tunable Berry phase, and\nvalley-resolved Landau quantization. These resultsprovides theoretical insight into\npolarization-sensitive and field-tunable magneto-optical responses in Dirac materials."
+  },
+  {
+    "title": "Controlling Dynamical Localization: Non-Ideal Modulation Pulsatile Function and Mean-Field Interaction Effects on Cold Atoms in a Modulated Gravitational Cavity",
+    "presenter": "MUHAMMAD NAEEM",
+    "institution": "Department of Physics, University of Sargodha, Sargodha",
+    "track": "Quantum Optics & Photonics",
+    "coauthors": "Muhammad Naeem, Muhammad Ayub, Amjad Sohail,  Khalid Naseer",
+    "abstract": "We investigate the classical and quantum dynamics of cold atoms in a modulated gravitational cavity (MGC) subject to a non-ideal modulation pulsatile function (NMPF) and mean-field interatomic interactions. By solving the time-dependent Schrödinger and Gross-Pitaevskii equations, we show that finite pulse shaping ($m, F$) and cubic nonlinearity ($u$) independently bypass dynamical localization (DL). Sharpening the pulse waveform enriches Fourier harmonics, causing KAM surface breakdown and early quantum diffusion when modulation depth exceeds $F = 0.1$, even inside the localization window. Weak interactions preserve DL, strong interactions destroy the required initial phase coherence, triggering a sub-diffusive delocalization crossover. Crucially, a significant asymmetry exists: self-focusing attractive interactions cause an abrupt breakdown at $u \\approx -10$, whereas, self-attenuating repulsive forces maintain stability up to $u \\approx +60$. These mechanisms offer dual-parameter control via acousto-optic pulse shaping and Feshbach-tunable scattering lengths in atom-optics setups."
+  },
+  {
+    "title": "Entanglement Generation of Different Subsystems in a Hybrid Magnomechanical System",
+    "presenter": "Muhammad Atif Nawaz",
+    "institution": "University of Sargodha, Sargodha, Punjab, Pakistan",
+    "track": "Quantum Optics & Photonics",
+    "coauthors": "Zainab Khalid, Muhmmad Muneeb, Marium Saeed, Khalid Naseer",
+    "abstract": "We study a hybrid magnomechanical system (HMMS) with two microwave cavities, each\ncontaining a YIG sphere, with an ensemble of atoms placed at the intersection of the cavities. We obtain indirect bipartite entanglement across several subsystems (Phonon mode of YIG-1 and magnon-2, Phonon mode of YIG-1 and cavity-2 mode, magnon-1 and cavity-2 modes, magnon-1 and magnon-2 modes, magnon-2 and cavity-1 modes, and cavity-1 and cavity-2 modes). We use logarithmic negativity as an entanglement metric to study the steady-state Gaussian correlations in the linearized coupling regime and investigate the effects of temperature, coupling strengths, and cavity detuning. In this work, we do not study the direct entanglement with other subsystems, but we conclude that the atomic ensemble greatly improves long-range entanglement by allowing coherent exchange between the two cavities, and generated bipartite entanglement remains robust up to experimentally accessible temperature ranges. Non-local quantum correlations in HMMS may be achieved in a unique and versatile manner using the suggested method, with potential applications spanning scalable quantum networks and on-chip quantum information processing."
+  },
+  {
+    "title": "Magnon-Atom Entanglement in a Hybrid Magnomechanical System",
+    "presenter": "MUHAMMAD MUNEEB",
+    "institution": "University of Sargodha",
+    "track": "Quantum Optics & Photonics",
+    "coauthors": "",
+    "abstract": "Hybrid magnomechanical systems combine phonons, the quanta of mechanical vibrations, with magnons, collective spin excitations, on a single platform. Since long-lived magnon modes are naturally supported by yttrium iron garnet (YIG) spheres, these systems are frequently achieved using them. By enabling coherent excitation exchange, the magnetostrictive effect facilitates the interaction between magnons and phonons. Magnons and photons can also interact strongly when connected to an optical or microwave cavity, creating a three-way hybrid system comprising photons, phonons, and magnons. It is possible to create quantum entangled states between several subsystems thanks to this hybridization.\nWe propose a hybrid quantum system that consists of two optical cavities, each con\ntaining a Yttrium Iron Garnet (YIG) sphere, with an atomic ensemble placed at the cav\nities’ intersection. This configuration introduces multiple interaction pathways in which\nthe atomic ensemble acts as a coherent intermediary, enabling indirect coupling between\notherwise weakly connected subsystems. By systematically tuning experimentally acces\nsible parameters, such as cavity detunings and coupling strengths, the system can be driven\ninto regimes that support and controllable bipartite entanglement. The role of the atomic\nensemble is particularly significant through collective coupling effects, it amplifies quan\ntum correlations and stabilizes the transfer of coherence across magnons, photons, and\nphonons. This mediation not only enhances entanglement generation but also allows flex\nible routing of quantum information between subsystems. To quantify the resulting cor\nrelations, we employ logarithmic negativity, a widely accepted entanglement measure that\nidentifies operational regimes where stable and resilient bipartite entanglement emerges.\nOur findings indicate that the proposed platform supports robust entanglement even in the\npresence of dissipation and external driving, provided that system parameters are optimized within feasible experimental ranges"
+  },
+  {
+    "title": "Optimizing Fundamental Sensitivity in Rb Atomic Magnetometers: A Multiparameter Relaxation Model of Pure and Binary Buffer Gases",
+    "presenter": "Zoya Arooj",
+    "institution": "National Institute of Lasers & Optronics (NILOP College), Nilore, Islamabad)",
+    "track": "Quantum Sensing & Metrology",
+    "coauthors": "Fatima Zafar , Hinna Tariq , and Muhammad Faisal",
+    "abstract": "The optimization of pure and binary buffer gas pressure sets the fundamental\nsensitivity limit of an optically pumped alkali-vapor magnetometer. We develop a\ntheoretical model of a non-SERF Rb Mz magnetometer using the optimal pressure to\nexplore the effects of concentration, bubble radius, and temperature on sensitivity. The\noptimal pressure for each buffer gas in a Rb vapor is determine by the minimum of the\ntotal relaxation rate. Factors like spin-exchange, spin-destruction collisions, spin diffusion,\nand radiation trapping (treated by a Holstein-type escape factor) contribute to the total\nrelaxation rate. Among pure gases (He, N2, Ne, Ar) Nitrogen gives the best sensitivity\n≈ 0.499 fT/√Hz at 273 Torr, through collisional quenching factor of radiation trapping\nwhile among the Helium based mixtures He–N2 shows advantage over pure He with a\nsensitivity of ≈ 0.511 fT/√Hz."
+  }
+];
+
+(function(){
+  const el=document.getElementById('absList');
+  const esc=s=>String(s==null?"":s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const cnt=document.getElementById('absCount');
+  if(cnt) cnt.textContent = ABSTRACTS.length + ' poster' + (ABSTRACTS.length===1?'':'s') + ' accepted.';
+
+  el.innerHTML = ABSTRACTS.map((a,i)=>{
+    const by=[a.presenter, a.institution].filter(Boolean).join(' — ');
+    const tag=a.track?`<span class="abs-tag">${esc(a.track)}</span>`:"";
+    const meta=[];
+    if(a.presenter) meta.push(`<div class="abs-meta"><b>Presenter:</b> ${esc(a.presenter)}${a.institution?', '+esc(a.institution):''}</div>`);
+    if(a.coauthors) meta.push(`<div class="abs-meta"><b>Co-authors:</b> ${esc(a.coauthors)}</div>`);
+    const abs=a.abstract?esc(a.abstract).replace(/\n/g,'<br>'):'Full abstract to follow.';
+    return `<div class="abs-item">
+      <button class="abs-head" aria-expanded="false">
+        <span class="abs-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="abs-titlewrap">
+          <span class="abs-title">${esc(a.title)}</span>
+          ${by?`<span class="abs-by">${esc(by)}</span>`:""}
+          ${tag}
+        </span>
+        <span class="abs-chev">&#9656;</span>
+      </button>
+      <div class="abs-body"><div class="abs-body-inner">${meta.join('')}${abs}</div></div>
+    </div>`;
+  }).join("");
+
+  el.querySelectorAll('.abs-head').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.abs-item');
+      const open=item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open?'true':'false');
+    });
+  });
+})();
+</script>
+</body></html>
